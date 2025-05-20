@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct ClockView: View {
-    var body: some View {
+public struct ClockView: View {
+    public var body: some View {
         VStack {
             TimelineView(.periodic(from: Date(), by: 1)) { timeline in
                 Group {
