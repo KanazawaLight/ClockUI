@@ -9,30 +9,35 @@
 import SwiftUI
 
 public struct ClockView: View {
-    public init() {}
+    private let dateFormat: Date.FormatStyle
+    private let timeFormat: Date.FormatStyle
+    private let font: Font
+    
+    public init(
+        dateFormat: Date.FormatStyle = Date.FormatStyle()
+            .year()
+            .month()
+            .day()
+            .weekday(.abbreviated),
+        timeFormat: Date.FormatStyle = Date.FormatStyle()
+            .hour()
+            .minute()
+            .second(),
+        font: Font = .title
+    ) {
+        self.dateFormat = dateFormat
+        self.timeFormat = timeFormat
+        self.font = font
+    }
 
     public var body: some View {
         VStack {
             TimelineView(.periodic(from: Date(), by: 1)) { timeline in
                 Group {
-                    Text(
-                        timeline.date,
-                        format: Date.FormatStyle()
-                            .year()
-                            .month()
-                            .day()
-                            .weekday(.abbreviated)
-                    )
-
-                    Text(
-                        timeline.date,
-                        format: Date.FormatStyle()
-                            .hour()
-                            .minute()
-                            .second()
-                    )
+                    Text(timeline.date, format: dateFormat)
+                    Text(timeline.date, format: timeFormat)
                 }
-                .font(.title)
+                .font(font)
                 .monospacedDigit()
             }
         }
