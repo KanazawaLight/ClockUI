@@ -35,7 +35,10 @@ public struct ClockView: View {
             TimelineView(.periodic(from: Date(), by: 1)) { timeline in
                 Group {
                     Text(timeline.date, format: dateFormat)
+                        .accessibilityLabel("日付")
+                    
                     Text(timeline.date, format: timeFormat)
+                        .accessibilityLabel("時刻")
                 }
                 .font(font)
                 .monospacedDigit()
