@@ -12,7 +12,7 @@ import SwiftUI
 /// - Parameter datePosition: 日付の表示位置（デフォルト: .top）
 public struct ClockView: View {
     /// 日付の表示位置を定義する列挙型
-    public enum DatePosition {
+    public enum DatePosition: Int {
         case top
         case bottom
         case leading
